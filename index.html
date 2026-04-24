@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Royal Rice Mills | Premium Rice Exporter from Pakistan</title>
+    <meta name="description" content="Royal Rice Mills is a leading exporter of premium Basmati and IRRI rice from Pakistan. Global shipping, ISO certified, and export-standard packaging.">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Home Specific Styles */
+        .trust-badges {
+            padding: 30px 0;
+            background: var(--bg-light);
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+        }
+        .badges-grid {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .badge-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        .badge-item i {
+            font-size: 1.8rem;
+            color: var(--secondary-color);
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .cat-card {
+            position: relative;
+            height: 400px;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            display: flex;
+            align-items: flex-end;
+            padding: 30px;
+            color: white;
+            background-size: cover;
+            background-position: center;
+        }
+        .cat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            transition: var(--transition-smooth);
+        }
+        .cat-card:hover::before {
+            background: linear-gradient(transparent, rgba(11, 61, 46, 0.9));
+        }
+        .cat-content {
+            position: relative;
+            z-index: 1;
+            transform: translateY(20px);
+            transition: var(--transition-smooth);
+        }
+        .cat-card:hover .cat-content {
+            transform: translateY(0);
+        }
+        .cat-card h3 { font-size: 1.5rem; margin-bottom: 10px; }
+        .cat-card .btn { margin-top: 15px; opacity: 0; transform: translateY(10px); }
+        .cat-card:hover .btn { opacity: 1; transform: translateY(0); }
+
+        .about-split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .about-image {
+            position: relative;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-medium);
+        }
+        .about-list {
+            margin: 25px 0;
+        }
+        .about-list li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+        .about-list li i {
+            color: var(--secondary-color);
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+        }
+        .p-card img {
+            height: 250px;
+            object-fit: cover;
+            width: 100%;
+        }
+        .p-info { padding: 20px; }
+        .p-info h3 { font-size: 1.2rem; margin-bottom: 10px; }
+        .p-specs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+        .p-specs span {
+            font-size: 0.75rem;
+            background: var(--bg-light);
+            padding: 4px 8px;
+            border-radius: 4px;
+            color: var(--text-muted);
+        }
+        .p-actions {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .timeline {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            position: relative;
+            margin-top: 50px;
+        }
+        .time-step {
+            text-align: center;
+            padding: 20px;
+            position: relative;
+        }
+        .step-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--bg-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            border: 2px solid transparent;
+            transition: var(--transition-smooth);
+        }
+        .time-step:hover .step-icon {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--secondary-color);
+        }
+        .time-step h4 { font-size: 0.95rem; }
+
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            text-align: center;
+            border-radius: var(--radius-lg);
+            padding: 60px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 300px;
+            height: 300px;
+            background: var(--secondary-color);
+            opacity: 0.1;
+            border-radius: 50%;
+        }
+
+        @media (max-width: 768px) {
+            .about-split { grid-template-columns: 1fr; }
+            .badges-grid { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Placeholder -->
+    <div id="header-placeholder" data-active="home"></div>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container hero-content">
+                <div class="hero-text">
+                    <h1>Premium Basmati & <span class="text-gold">IRRI Rice</span> Exporter</h1>
+                    <p>Clean, Hygienic, Export-Standard Packaging with Worldwide Delivery from the heart of Pakistan's rice fields.</p>
+                    <div class="hero-btns">
+                        <a href="products.html" class="btn btn-gold">Explore Products</a>
+                        <a href="https://wa.me/923443004914" class="btn btn-outline-white"><i class="fab fa-whatsapp"></i> Get Price on WhatsApp</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="images/premium-banner.png" alt="Premium Rice Promotional Banner" style="border-radius: var(--radius-lg); box-shadow: var(--shadow-large); max-width: 100%;">
+                </div>
+            </div>
+        </section>
+
+        <!-- Trust Badges -->
+        <div class="trust-badges">
+            <div class="container badges-grid">
+                <div class="badge-item reveal reveal-up">
+                    <i class="fas fa-certificate"></i>
+                    <span>ISO Certified</span>
+                </div>
+                <div class="badge-item reveal reveal-up">
+                    <i class="fas fa-shield-halal"></i>
+                    <span>HACCP Standard</span>
+                </div>
+                <div class="badge-item reveal reveal-up">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Halal Certified</span>
+                </div>
+                <div class="badge-item reveal reveal-up">
+                    <i class="fas fa-globe"></i>
+                    <span>Worldwide Shipping</span>
+                </div>
+                <div class="badge-item reveal reveal-up">
+                    <i class="fas fa-headset"></i>
+                    <span>24/7 Support</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product Categories -->
+        <section class="section">
+            <div class="container text-center">
+                <h2 class="section-title centered reveal reveal-up">Product Categories</h2>
+                <p class="section-subtitle centered-subtitle reveal reveal-up">We offer a wide range of premium Pakistani rice varieties to meet global demands.</p>
+                
+                <div class="category-grid">
+                    <div class="cat-card branded-img reveal reveal-up" style="background-image: url('https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&q=80&w=800')">
+                        <div class="cat-content text-center">
+                            <h3>Basmati Rice</h3>
+                            <a href="products.html?category=Basmati" class="btn btn-gold">View Products</a>
+                        </div>
+                    </div>
+                    <div class="cat-card branded-img reveal reveal-up" style="background-image: url('https://images.unsplash.com/photo-1591814468924-caf88d1232e1?auto=format&fit=crop&q=80&w=800')">
+                        <div class="cat-content">
+                            <h3>Sella Rice</h3>
+                            <a href="products.html?type=Sella" class="btn btn-gold">View Products</a>
+                        </div>
+                    </div>
+                    <div class="cat-card branded-img reveal reveal-up" style="background-image: url('https://images.unsplash.com/photo-1536679545597-c2e5e1946495?auto=format&fit=crop&q=80&w=800')">
+                        <div class="cat-content">
+                            <h3>IRRI-6 Rice</h3>
+                            <a href="product-details.html?id=irri-6" class="btn btn-gold">View Products</a>
+                        </div>
+                    </div>
+                    <div class="cat-card branded-img reveal reveal-up" style="background-image: url('https://images.unsplash.com/photo-1574484284002-952d92456975?auto=format&fit=crop&q=80&w=800')">
+                        <div class="cat-content">
+                            <h3>Brown Rice</h3>
+                            <a href="product-details.html?id=brown-rice" class="btn btn-gold">View Products</a>
+                        </div>
+                    </div>
+                    <div class="cat-card branded-img reveal reveal-up" style="background-image: url('https://images.unsplash.com/photo-1516684732162-798a0062be99?auto=format&fit=crop&q=80&w=800')">
+                        <div class="cat-content">
+                            <h3>Steam Rice</h3>
+                            <a href="product-details.html?id=steam-rice" class="btn btn-gold">View Products</a>
+                        </div>
+                    </div>
+                    <div class="cat-card branded-img reveal reveal-up" style="background-image: url('https://images.unsplash.com/photo-1501265976582-c1e1b0bbaf63?auto=format&fit=crop&q=80&w=800')">
+                        <div class="cat-content">
+                            <h3>Broken Rice</h3>
+                            <a href="product-details.html?id=broken-rice" class="btn btn-gold">View Products</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Short Section -->
+        <section class="section" style="background-color: var(--bg-light);">
+            <div class="container about-split">
+                <div class="about-image branded-img reveal reveal-up">
+                    <img src="https://images.unsplash.com/photo-1501265976582-c1e1b0bbaf63?auto=format&fit=crop&q=80&w=800" alt="Milling Facility">
+                </div>
+                <div class="about-text">
+                    <h2 class="section-title reveal reveal-up">Pakistan's Trusted Rice Exporter</h2>
+                    <p class="reveal reveal-up">Royal Rice Mills is committed to providing the highest quality rice processed through state-of-the-art milling technology. We ensure every grain meets international food safety standards.</p>
+                    <ul class="about-list reveal reveal-up">
+                        <li><i class="fas fa-check-circle"></i> Modern milling technology</li>
+                        <li><i class="fas fa-check-circle"></i> Double polishing & sorting</li>
+                        <li><i class="fas fa-check-circle"></i> Moisture controlled storage</li>
+                        <li><i class="fas fa-check-circle"></i> Competitive wholesale prices</li>
+                    </ul>
+                    <a href="about.html" class="btn btn-green reveal reveal-up">Learn More</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Products -->
+        <section class="section">
+            <div class="container text-center">
+                <h2 class="section-title centered reveal reveal-up">Best Selling Products</h2>
+                <p class="section-subtitle centered-subtitle reveal reveal-up">Our most popular rice varieties exported worldwide.</p>
+                
+                <div class="product-grid" id="featured-products">
+                    <!-- Dynamic Loading via JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Quality Process Timeline -->
+        <section class="section" style="background-color: var(--bg-light);">
+            <div class="container text-center">
+                <h2 class="section-title centered reveal reveal-up">Our Quality Process</h2>
+                <div class="timeline reveal reveal-up">
+                    <div class="time-step">
+                        <div class="step-icon"><i class="fas fa-leaf"></i></div>
+                        <h4>Paddy Selection</h4>
+                    </div>
+                    <div class="time-step">
+                        <div class="step-icon"><i class="fas fa-broom"></i></div>
+                        <h4>Cleaning</h4>
+                    </div>
+                    <div class="time-step">
+                        <div class="step-icon"><i class="fas fa-industry"></i></div>
+                        <h4>Milling</h4>
+                    </div>
+                    <div class="time-step">
+                        <div class="step-icon"><i class="fas fa-search"></i></div>
+                        <h4>Color Sorting</h4>
+                    </div>
+                    <div class="time-step">
+                        <div class="step-icon"><i class="fas fa-vial"></i></div>
+                        <h4>Testing</h4>
+                    </div>
+                    <div class="time-step">
+                        <div class="step-icon"><i class="fas fa-box"></i></div>
+                        <h4>Packaging</h4>
+                    </div>
+                    <div class="time-step">
+                        <div class="step-icon"><i class="fas fa-ship"></i></div>
+                        <h4>Export</h4>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="section">
+            <div class="container">
+                <div class="cta-section reveal reveal-up">
+                    <h2>Need Bulk Rice Supply?</h2>
+                    <p style="margin: 15px 0 30px;">Get the latest export prices and customized packaging options today.</p>
+                    <div class="hero-btns" style="justify-content: center;">
+                        <a href="quote.html" class="btn btn-gold">Request Quote</a>
+                        <a href="https://wa.me/923443004914" class="btn btn-outline-white">WhatsApp Now</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Promotional Popup Modal -->
+    <div id="promoModal" class="modal" style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.8); backdrop-filter: blur(5px); align-items: center; justify-content: center;">
+        <div class="modal-content reveal reveal-up" style="background-color: var(--bg-light); margin: auto; padding: 0; border: none; width: 90%; max-width: 600px; border-radius: var(--radius-lg); position: relative; overflow: hidden; box-shadow: 0 25px 50px rgba(0,0,0,0.5);">
+            <span class="close-modal" id="closeModalBtn" style="position: absolute; top: 15px; right: 20px; color: white; font-size: 28px; font-weight: bold; cursor: pointer; z-index: 10;">&times;</span>
+            <div style="position: relative;">
+                <img src="images/premium-banner.png" alt="Special Offer" style="width: 100%; height: 250px; object-fit: cover;">
+                <div style="position: absolute; top:0; left:0; width:100%; height:100%; background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.7)); display: flex; align-items: flex-end; padding: 20px;">
+                    <h2 style="color: white; margin: 0; font-size: 2rem;">Ramadan Special Offer</h2>
+                </div>
+            </div>
+            <div style="padding: 30px; text-align: center;">
+                <p style="font-size: 1.1rem; margin-bottom: 20px;">Get up to <strong>15% OFF</strong> on bulk orders of Super Kernel Basmati Rice this month! Experience the royal taste.</p>
+                <a href="quote.html" class="btn btn-gold" id="claimOfferBtn" style="padding: 12px 30px; font-size: 1.1rem;">Claim Offer Now</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Placeholder -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Scripts -->
+    <script src="js/components.js"></script>
+    <script>
+        // ── INLINE FEATURED PRODUCTS (no fetch needed — works on file://) ───
+        (function() {
+            const featured = [
+                { id: "super-kernel-basmati", name: "Super Kernel Basmati Rice", image: "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&q=80&w=800", grainLength: "8.0–8.4 mm", broken: "Max 2%", packing: ["1kg", "2kg", "5kg", "10kg", "25kg", "50kg"] },
+                { id: "1121-basmati-white", name: "1121 Basmati White Rice", image: "https://images.unsplash.com/photo-1536679545597-c2e5e1946495?auto=format&fit=crop&q=80&w=800", grainLength: "8.2–8.6 mm", broken: "Max 2%", packing: ["1kg", "5kg", "10kg", "25kg", "50kg"] },
+                { id: "basmati-sella-gold", name: "Basmati Sella (Gold)", image: "https://images.unsplash.com/photo-1591814468924-caf88d1232e1?auto=format&fit=crop&q=80&w=800", grainLength: "7.5–8.0 mm", broken: "Max 3%", packing: ["1kg", "2kg", "5kg", "10kg", "25kg", "50kg"] },
+                { id: "irri-6-white", name: "IRRI-6 White Rice", image: "https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?auto=format&fit=crop&q=80&w=800", grainLength: "6.4–6.8 mm", broken: "5%/10%/25%", packing: ["5kg", "10kg", "25kg", "50kg"] }
+            ];
+            const container = document.getElementById('featured-products');
+            featured.forEach(p => {
+                container.innerHTML += `
+                    <div class="card p-card reveal reveal-up">
+                        <div style="position:relative;overflow:hidden;aspect-ratio:4/3;">
+                            <img src="${p.image}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover;" onerror="this.src='https://images.unsplash.com/photo-1536679545597-c2e5e1946495?auto=format&fit=crop&q=80&w=800'">
+                            <span style="position:absolute;bottom:10px;right:10px;background:rgba(11,61,46,0.85);color:#c9a227;font-size:0.6rem;font-weight:700;padding:4px 9px;border-radius:5px;letter-spacing:1px;border:1px solid #c9a227;">Royal Rice Mills</span>
+                        </div>
+                        <div class="p-info text-center">
+                            <h3 style="font-size:1.1rem;margin-bottom:10px;">${p.name}</h3>
+                            <div class="p-specs">
+                                <span>🌾 ${p.grainLength}</span>
+                                <span>Broken: ${p.broken}</span>
+                            </div>
+                            <p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:14px;">Packing: ${p.packing.slice(0,3).join(', ')}...</p>
+                            <div class="p-actions">
+                                <a href="product-details.html?id=${p.id}" class="btn btn-green btn-sm" style="padding:8px;font-size:0.8rem;">View Details</a>
+                                <a href="https://wa.me/923443004914?text=Inquiry about ${encodeURIComponent(p.name)}" class="btn btn-outline-green btn-sm" style="padding:8px;font-size:0.8rem;"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+        })();
+
+        // Promotional Modal Logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const modal = document.getElementById('promoModal');
+            const closeBtn = document.getElementById('closeModalBtn');
+            const claimBtn = document.getElementById('claimOfferBtn');
+            
+            // Show modal after 2 seconds if not seen before
+            if(!localStorage.getItem('promoSeen')) {
+                setTimeout(() => {
+                    modal.style.display = 'flex';
+                }, 2000);
+            }
+
+            const closeModal = () => {
+                modal.style.display = 'none';
+                localStorage.setItem('promoSeen', 'true');
+            };
+
+            closeBtn.onclick = closeModal;
+            claimBtn.onclick = closeModal;
+
+            window.onclick = (event) => {
+                if (event.target == modal) {
+                    closeModal();
+                }
+            };
+        });
+    </script>
+</body>
+</html>

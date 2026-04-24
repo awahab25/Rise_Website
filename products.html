@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rice Products | Royal Rice Mills Pakistan</title>
+    <meta name="description" content="Browse our catalog of premium Pakistani Basmati, Sella, IRRI-6, and Specialty rice varieties. Direct from the mill.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .inner-hero {
+            background: linear-gradient(rgba(11,61,46,0.85), rgba(11,61,46,0.85)),
+                url('https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&q=80&w=1600');
+            background-size: cover;
+            background-position: center;
+            padding: 100px 0 60px;
+            color: white;
+            text-align: center;
+        }
+        .products-layout {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 40px;
+            padding: 50px 0;
+        }
+        .filter-sidebar {
+            background: white;
+            padding: 25px;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-soft);
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+            border: 1px solid #f0f0f0;
+        }
+        .filter-group { margin-bottom: 25px; }
+        .filter-group h4 {
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--secondary-color);
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+        .filter-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            transition: color 0.2s;
+        }
+        .filter-option:hover { color: var(--secondary-color); }
+        .filter-option input { cursor: pointer; accent-color: var(--primary-color); width: 16px; height: 16px; }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        .product-card {
+            background: white;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            border: 1.5px solid #eee;
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+        .product-card:hover {
+            border-color: var(--secondary-color);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-medium);
+        }
+        .p-img-wrap {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 4/3;
+        }
+        .p-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
+        .product-card:hover .p-img-wrap img { transform: scale(1.05); }
+        .p-badge {
+            position: absolute; top: 12px; left: 12px;
+            background: var(--primary-color); color: var(--secondary-color);
+            padding: 4px 10px; border-radius: 4px; font-size: 0.7rem; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 0.5px;
+            display: flex; align-items: center; gap: 5px;
+        }
+        .p-brand-overlay {
+            position: absolute; bottom: 10px; right: 10px;
+            background: rgba(11,61,46,0.88); color: var(--secondary-color);
+            font-size: 0.6rem; font-weight: 700; padding: 4px 10px;
+            border-radius: 5px; letter-spacing: 1px; border: 1px solid var(--secondary-color);
+        }
+        .p-info { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; }
+        .p-cat { font-size: 0.75rem; color: var(--secondary-color); font-weight: 700; text-transform: uppercase; margin-bottom: 5px; }
+        .p-title { font-size: 1.15rem; color: var(--primary-color); margin-bottom: 12px; }
+        .p-specs {
+            display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 15px;
+        }
+        .p-spec-tag {
+            background: var(--bg-light); color: var(--text-dark);
+            font-size: 0.75rem; padding: 4px 10px; border-radius: 4px;
+            border: 1px solid #e0e0e0; display: flex; align-items: center; gap: 5px;
+        }
+        .p-desc { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 20px; }
+        .p-packing { font-size: 0.8rem; color: var(--text-dark); font-weight: 600; margin-bottom: 15px; }
+        .p-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: auto; }
+        
+        .no-results { text-align: center; padding: 60px; grid-column: 1/-1; }
+        .no-results i { font-size: 4rem; color: #ddd; margin-bottom: 20px; display: block; }
+        
+        @media (max-width: 992px) {
+            .products-layout { grid-template-columns: 1fr; }
+            .filter-sidebar { position: static; margin-bottom: 30px; }
+        }
+    </style>
+</head>
+<body>
+    <div id="header-placeholder" data-active="products"></div>
+
+    <section class="inner-hero">
+        <div class="container">
+            <h1>Our Premium Rice Catalog</h1>
+            <p>Exporting the finest grains from Pakistan's fertile plains to your warehouse.</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="products-layout">
+            <!-- Sidebar Filters -->
+            <aside class="filter-sidebar">
+                <div class="filter-group">
+                    <h4>Categories</h4>
+                    <label class="filter-option"><input type="checkbox" class="cat-filter" value="Basmati"> Basmati Rice</label>
+                    <label class="filter-option"><input type="checkbox" class="cat-filter" value="IRRI"> IRRI Rice</label>
+                    <label class="filter-option"><input type="checkbox" class="cat-filter" value="Specialty"> Specialty Rice</label>
+                </div>
+                <div class="filter-group">
+                    <h4>Grain Type</h4>
+                    <label class="filter-option"><input type="checkbox" class="type-filter" value="Raw"> Raw (White)</label>
+                    <label class="filter-option"><input type="checkbox" class="type-filter" value="Sella"> Sella (Parboiled)</label>
+                    <label class="filter-option"><input type="checkbox" class="type-filter" value="Steam"> Steam</label>
+                </div>
+                <div class="filter-group">
+                    <h4>Packaging Size</h4>
+                    <label class="filter-option"><input type="checkbox" class="pack-filter" value="1-5"> 1 KG – 5 KG</label>
+                    <label class="filter-option"><input type="checkbox" class="pack-filter" value="10-25"> 10 KG – 25 KG</label>
+                    <label class="filter-option"><input type="checkbox" class="pack-filter" value="50"> 50 KG Bulk</label>
+                </div>
+                <button id="clearFilters" class="btn btn-outline-green" style="width: 100%;"><i class="fas fa-times"></i> Clear Filters</button>
+            </aside>
+
+            <!-- Main Content -->
+            <div>
+                <div style="margin-bottom: 25px; display: flex; justify-content: space-between; align-items: center;">
+                    <p id="productCount" style="font-size: 0.95rem; color: var(--text-muted);">Showing 0 of 0 products</p>
+                    <div style="display: flex; gap: 10px; align-items: center;">
+                        <span style="font-size: 0.85rem; font-weight: 700;">Search:</span>
+                        <input type="text" id="searchInput" placeholder="Search by name..." style="padding: 8px 12px; border: 1.5px solid #eee; border-radius: 5px; outline: none;">
+                    </div>
+                </div>
+                <div class="products-grid" id="productsContainer">
+                    <!-- Products rendered by JS -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer-placeholder"></div>
+    <script src="js/components.js"></script>
+    <script>
+        // ── INLINE PRODUCT DATA (Purely Rice Related Images) ────────────────
+        const PRODUCTS = [
+            {
+                id: "super-kernel-basmati",
+                name: "Super Kernel Basmati Rice",
+                category: "Basmati",
+                type: "Raw",
+                image: "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&q=80&w=800",
+                description: "Pakistan's finest extra-long grain basmati with exceptional aroma and fluffy texture after cooking.",
+                specs: { length: "8.0–8.4 mm", broken: "Max 2%", purity: "99%+" },
+                packing: ["1kg", "2kg", "5kg", "10kg", "25kg", "50kg"],
+                featured: true
+            },
+            {
+                id: "1121-basmati-white",
+                name: "1121 Basmati White Rice",
+                category: "Basmati",
+                type: "Raw",
+                image: "https://images.unsplash.com/photo-1536679545597-c2e5e1946495?auto=format&fit=crop&q=80&w=800",
+                description: "World's longest grain basmati, known for extraordinary elongation after cooking and premium aroma.",
+                specs: { length: "8.2–8.6 mm", broken: "Max 2%", purity: "99%+" },
+                packing: ["1kg", "5kg", "10kg", "25kg", "50kg"],
+                featured: true
+            },
+            {
+                id: "basmati-sella-gold",
+                name: "Basmati Sella (Gold)",
+                category: "Basmati",
+                type: "Sella",
+                image: "https://images.unsplash.com/photo-1591814468924-caf88d1232e1?auto=format&fit=crop&q=80&w=800",
+                description: "Parboiled basmati rice with golden color, non-sticky grains and excellent elongation ratio.",
+                specs: { length: "7.5–8.0 mm", broken: "Max 3%", purity: "98%+" },
+                packing: ["1kg", "2kg", "5kg", "10kg", "25kg", "50kg"],
+                featured: true
+            },
+            {
+                id: "irri-6-white",
+                name: "IRRI-6 White Rice",
+                category: "IRRI",
+                type: "Raw",
+                image: "https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?auto=format&fit=crop&q=80&w=800",
+                description: "Most popular non-basmati long grain rice from Pakistan, ideal for everyday consumption worldwide.",
+                specs: { length: "6.4–6.8 mm", broken: "5%/10%/25%", purity: "95%+" },
+                packing: ["5kg", "10kg", "25kg", "50kg"],
+                featured: true
+            },
+            {
+                id: "irri-9-white",
+                name: "IRRI-9 White Rice",
+                category: "IRRI",
+                type: "Raw",
+                image: "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&q=80&w=800",
+                description: "Medium grain non-basmati rice with good cooking quality and competitive pricing for bulk markets.",
+                specs: { length: "6.0–6.4 mm", broken: "Max 5%", purity: "95%+" },
+                packing: ["5kg", "10kg", "25kg", "50kg"],
+                featured: false
+            },
+            {
+                id: "pk-385-basmati",
+                name: "PK-385 Basmati Rice",
+                category: "Basmati",
+                type: "Raw",
+                image: "https://images.unsplash.com/photo-1591814468924-caf88d1232e1?auto=format&fit=crop&q=80&w=800",
+                description: "Classic aromatic basmati variety with superior taste and affordable pricing for global exports.",
+                specs: { length: "6.8–7.2 mm", broken: "Max 2%", purity: "98%+" },
+                packing: ["1kg", "5kg", "10kg", "25kg", "50kg"],
+                featured: false
+            },
+            {
+                id: "brown-rice",
+                name: "Premium Brown Rice",
+                category: "Specialty",
+                type: "Raw",
+                image: "https://images.unsplash.com/photo-1574484284002-952d92456975?auto=format&fit=crop&q=80&w=800",
+                description: "Unpolished whole grain rice, high in fiber and nutrients. Retains the outer bran layer for health benefits.",
+                specs: { length: "7.0–7.4 mm", broken: "Max 5%", purity: "99%+" },
+                packing: ["1kg", "2kg", "5kg", "25kg"],
+                featured: false
+            },
+            {
+                id: "steam-basmati",
+                name: "Steam Basmati Rice",
+                category: "Basmati",
+                type: "Steam",
+                image: "https://images.unsplash.com/photo-1536679545597-c2e5e1946495?auto=format&fit=crop&q=80&w=800",
+                description: "Lightly steamed basmati rice with improved texture, reduced starch, and perfect for biryani dishes.",
+                specs: { length: "7.5–8.0 mm", broken: "Max 2%", purity: "98%+" },
+                packing: ["1kg", "5kg", "10kg", "25kg", "50kg"],
+                featured: false
+            },
+            {
+                id: "broken-rice",
+                name: "A-Grade Broken Rice",
+                category: "Specialty",
+                type: "Raw",
+                image: "https://images.unsplash.com/photo-1501265976582-c1e1b0bbaf63?auto=format&fit=crop&q=80&w=800",
+                description: "High quality broken rice grains, suitable for rice flour, cereals, and industrial food production.",
+                specs: { length: "Fragments", broken: "100%", purity: "95%+" },
+                packing: ["25kg", "50kg"],
+                featured: false
+            },
+            {
+                id: "c9-specialty",
+                name: "C9 Specialty Rice",
+                category: "Specialty",
+                type: "Raw",
+                image: "https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?auto=format&fit=crop&q=80&w=800",
+                description: "A unique hybrid variety offering a balance between long grain and superior cooking consistency.",
+                specs: { length: "6.8–7.0 mm", broken: "Max 5%", purity: "97%+" },
+                packing: ["10kg", "25kg", "50kg"],
+                featured: false
+            }
+        ];
+
+        function renderProducts(filtered) {
+            const container = document.getElementById('productsContainer');
+            const countEl = document.getElementById('productCount');
+            
+            countEl.innerText = `Showing ${filtered.length} of ${PRODUCTS.length} products`;
+            
+            if (filtered.length === 0) {
+                container.innerHTML = `<div class="no-results"><i class="fas fa-search"></i><h3>No products found</h3><p>Try adjusting your filters or search terms.</p></div>`;
+                return;
+            }
+
+            container.innerHTML = '';
+            filtered.forEach(p => {
+                const card = `
+                <div class="product-card reveal reveal-up">
+                    <div class="p-img-wrap">
+                        ${p.featured ? '<span class="p-badge"><i class="fas fa-star"></i> Best Seller</span>' : ''}
+                        <img src="${p.image}" alt="${p.name}" onerror="this.src='https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&q=80&w=800'">
+                        <span class="p-brand-overlay">Royal Rice Mills</span>
+                    </div>
+                    <div class="p-info">
+                        <span class="p-cat">${p.category} Rice · ${p.type}</span>
+                        <h3 class="p-title">${p.name}</h3>
+                        <div class="p-specs">
+                            <span class="p-spec-tag">🌾 ${p.specs.length}</span>
+                            <span class="p-spec-tag"><i class="fas fa-tint"></i> ${p.specs.broken} Broken</span>
+                        </div>
+                        <p class="p-desc">${p.description}</p>
+                        <p class="p-packing"><i class="fas fa-box"></i> Packing: ${p.packing.slice(0,3).join(', ')}${p.packing.length > 3 ? '...' : ''}</p>
+                        <div class="p-actions">
+                            <a href="product-details.html?id=${p.id}" class="btn btn-green btn-sm" style="text-align:center;">View Details</a>
+                            <a href="quote.html?id=${p.id}" class="btn btn-gold btn-sm" style="text-align:center;">Get Quote</a>
+                        </div>
+                    </div>
+                </div>`;
+                container.innerHTML += card;
+            });
+        }
+
+        function applyFilters() {
+            const cats = Array.from(document.querySelectorAll('.cat-filter:checked')).map(cb => cb.value);
+            const types = Array.from(document.querySelectorAll('.type-filter:checked')).map(cb => cb.value);
+            const packs = Array.from(document.querySelectorAll('.pack-filter:checked')).map(cb => cb.value);
+            const search = document.getElementById('searchInput').value.toLowerCase().trim();
+
+            const filtered = PRODUCTS.filter(p => {
+                const matchCat = cats.length === 0 || cats.includes(p.category);
+                const matchType = types.length === 0 || types.includes(p.type);
+                const matchSearch = !search || p.name.toLowerCase().includes(search) || p.description.toLowerCase().includes(search);
+                
+                let matchPack = packs.length === 0;
+                if (packs.length > 0) {
+                    const sizes = p.packing.map(s => parseInt(s));
+                    if (packs.includes('1-5') && sizes.some(s => s >= 1 && s <= 5)) matchPack = true;
+                    if (packs.includes('10-25') && sizes.some(s => s >= 10 && s <= 25)) matchPack = true;
+                    if (packs.includes('50') && sizes.some(s => s === 50)) matchPack = true;
+                }
+
+                return matchCat && matchType && matchPack && matchSearch;
+            });
+
+            renderProducts(filtered);
+        }
+
+        // Event Listeners
+        document.querySelectorAll('.cat-filter, .type-filter, .pack-filter').forEach(el => el.addEventListener('change', applyFilters));
+        document.getElementById('searchInput').addEventListener('input', applyFilters);
+        document.getElementById('clearFilters').addEventListener('click', () => {
+            document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+            document.getElementById('searchInput').value = '';
+            applyFilters();
+        });
+
+        // Initial Render
+        renderProducts(PRODUCTS);
+
+        // Check for category in URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const urlCat = urlParams.get('category');
+        if (urlCat) {
+            const cb = document.querySelector(`.cat-filter[value="${urlCat}"]`);
+            if (cb) {
+                cb.checked = true;
+                applyFilters();
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Post | Royal Rice Mills</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .post-hero {
+            padding: 120px 0 60px;
+            background: var(--bg-light);
+        }
+        .post-container {
+            max-width: 850px;
+            margin: 0 auto;
+            background: white;
+            padding: 50px;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-soft);
+            margin-top: -80px;
+            position: relative;
+            z-index: 2;
+        }
+        .post-meta {
+            display: flex;
+            gap: 20px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 25px;
+            border-bottom: 1px solid #f0f0f0;
+            padding-bottom: 15px;
+        }
+        .post-meta i { color: var(--secondary-color); margin-right: 5px; }
+        .post-content img {
+            width: 100%;
+            border-radius: var(--radius-md);
+            margin: 30px 0;
+            box-shadow: var(--shadow-medium);
+        }
+        .post-content h2 { color: var(--primary-color); margin: 40px 0 20px; }
+        .post-content p { line-height: 1.8; color: var(--text-dark); margin-bottom: 20px; }
+        .post-content blockquote {
+            border-left: 5px solid var(--secondary-color);
+            padding: 20px 30px;
+            background: var(--bg-light);
+            font-style: italic;
+            font-size: 1.1rem;
+            margin: 30px 0;
+        }
+        .share-box {
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid #f0f0f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .share-links a {
+            font-size: 1.2rem;
+            margin-left: 15px;
+            color: var(--primary-color);
+            transition: color 0.2s;
+        }
+        .share-links a:hover { color: var(--secondary-color); }
+
+        @media (max-width: 768px) {
+            .post-container { padding: 30px 20px; margin-top: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <div class="post-hero">
+        <div class="container text-center">
+            <span id="post-category" style="background:var(--primary-color); color:var(--secondary-color); padding:5px 15px; border-radius:20px; font-size:0.8rem; font-weight:700; text-transform:uppercase;">Category</span>
+            <h1 id="post-title" style="font-size:2.8rem; color:var(--primary-color); margin-top:20px; margin-bottom:100px;">Loading Post...</h1>
+        </div>
+    </div>
+
+    <div class="container">
+        <article class="post-container">
+            <div class="post-meta">
+                <span id="post-date"><i class="far fa-calendar-alt"></i> Date</span>
+                <span id="post-time"><i class="far fa-clock"></i> 5 min read</span>
+                <span><i class="far fa-user"></i> By Admin</span>
+            </div>
+            
+            <div class="post-content" id="post-content">
+                <!-- Content injected here -->
+            </div>
+
+            <div class="share-box">
+                <span style="font-weight:700;">Share this article:</span>
+                <div class="share-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </article>
+    </div>
+
+    <div id="footer-placeholder"></div>
+    <script src="js/components.js"></script>
+    <script>
+        const BLOGS = [
+            {
+                slug: "rice-export-process-pakistan",
+                title: "Complete Guide to Rice Export Process from Pakistan",
+                category: "Export Guide",
+                date: "March 15, 2026",
+                readTime: "8 min read",
+                image: "https://images.unsplash.com/photo-1536679545597-c2e5e1946495?auto=format&fit=crop&q=80&w=800",
+                content: `
+                    <p>Pakistan is the 4th largest exporter of rice in the world. The process of exporting rice involves several critical steps to ensure quality and compliance with international standards.</p>
+                    <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&q=80&w=1200" alt="Rice Field">
+                    <h2>Step 1: Procurement of Paddy</h2>
+                    <p>The journey begins in the fertile fields of Punjab and Sindh. We procure high-quality paddy directly from farmers during the harvest season. This ensures we get the freshest grains before they are processed.</p>
+                    <h2>Step 2: Milling and Processing</h2>
+                    <p>The raw paddy is transported to our state-of-the-art mills. Here, it undergoes cleaning, husking, whitening, and polishing. Our modern machinery ensures minimal breakage and maximum purity.</p>
+                    <blockquote>"Quality is not an act, it is a habit. At Royal Rice Mills, we treat every grain with the respect it deserves."</blockquote>
+                    <h2>Step 3: Quality Control and Testing</h2>
+                    <p>Before packaging, the rice is tested in our laboratory. We check for moisture content, grain length, and broken percentage. Only the grains that meet our strict "Royal Standard" proceed to the next stage.</p>
+                    <img src="https://images.unsplash.com/photo-1532187875605-1ef6c7a6bbba?auto=format&fit=crop&q=80&w=1200" alt="Lab Testing">
+                    <h2>Step 4: Packaging and Shipping</h2>
+                    <p>We offer customized packaging solutions, from 1kg retail bags to 50kg bulk sacks. Once packed, the containers are sealed and transported to Port Qasim, Karachi, for global shipment.</p>
+                `
+            }
+            // Other posts would be here...
+        ];
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const slug = params.get('slug') || 'rice-export-process-pakistan';
+            const post = BLOGS.find(p => p.slug === slug) || BLOGS[0];
+
+            document.title = `${post.title} | Royal Rice Mills`;
+            document.getElementById('post-title').innerText = post.title;
+            document.getElementById('post-category').innerText = post.category;
+            document.getElementById('post-date').innerHTML = `<i class="far fa-calendar-alt"></i> ${post.date}`;
+            document.getElementById('post-time').innerHTML = `<i class="far fa-clock"></i> ${post.readTime}`;
+            document.getElementById('post-content').innerHTML = `
+                <div style="position:relative; margin-bottom:30px; border-radius:10px; overflow:hidden;">
+                    <img src="${post.image}" alt="${post.title}" style="margin:0;">
+                    <span style="position:absolute; bottom:15px; right:15px; background:rgba(11,61,46,0.85); color:#c9a227; font-size:0.7rem; padding:5px 12px; border-radius:6px; border:1px solid #c9a227; font-weight:700; letter-spacing:1px;">Royal Rice Mills</span>
+                </div>
+                ${post.content}
+            `;
+        });
+    </script>
+</body>
+</html>

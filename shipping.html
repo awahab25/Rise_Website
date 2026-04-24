@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Export & Shipping | Royal Rice Mills Pakistan</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .inner-hero {
+            background: linear-gradient(rgba(11, 61, 46, 0.85), rgba(11, 61, 46, 0.85)), url('images/hero-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            padding: 120px 0 80px;
+            color: white;
+            text-align: center;
+        }
+
+        .map-section {
+            background: #fff;
+            padding: 80px 0;
+            text-align: center;
+        }
+        .world-map {
+            width: 100%;
+            height: 500px;
+            background: var(--bg-light);
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 40px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .world-map i { font-size: 15rem; color: #ddd; opacity: 0.5; }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+            margin-top: 50px;
+        }
+        .step-item {
+            text-align: center;
+            padding: 30px;
+            border: 1px dashed #ddd;
+            border-radius: var(--radius-md);
+        }
+        .step-number { width: 40px; height: 40px; background: var(--secondary-color); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; font-weight: 700; }
+
+        .docs-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            background: var(--bg-light);
+            padding: 50px;
+            border-radius: var(--radius-lg);
+        }
+        .doc-item { display: flex; align-items: center; gap: 15px; padding: 15px; background: white; border-radius: var(--radius-sm); box-shadow: var(--shadow-soft); }
+        .doc-item i { color: var(--secondary-color); font-size: 1.2rem; }
+
+        @media (max-width: 768px) {
+            .docs-list { grid-template-columns: 1fr; padding: 30px; }
+        }
+    </style>
+</head>
+<body>
+    <div id="header-placeholder" data-active="shipping"></div>
+
+    <section class="inner-hero">
+        <div class="container">
+            <h1>Global Export & Shipping</h1>
+            <p>Seamlessly delivering the world's finest rice to over 50 destinations.</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <section class="map-section reveal reveal-up">
+            <h2 class="section-title centered">Our Global Presence</h2>
+            <p class="section-subtitle centered-subtitle">We export to UAE, Saudi Arabia, Qatar, Oman, UK, Kenya, Somalia, Afghanistan, China, Malaysia and more.</p>
+            
+            <div class="world-map">
+                <!-- Using a large font-awesome globe icon as a placeholder for a real map script -->
+                <i class="fas fa-globe-americas"></i>
+                <div style="position: absolute; width: 100%; height: 100%; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 40px; opacity: 0.8;">
+                    <span style="background: var(--primary-color); color: white; padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; box-shadow: var(--shadow-soft);">Europe</span>
+                    <span style="background: var(--primary-color); color: white; padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; box-shadow: var(--shadow-soft);">Middle East</span>
+                    <span style="background: var(--primary-color); color: white; padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; box-shadow: var(--shadow-soft);">Africa</span>
+                    <span style="background: var(--primary-color); color: white; padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; box-shadow: var(--shadow-soft);">Southeast Asia</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title centered reveal reveal-up">The Export Process</h2>
+            <div class="process-steps">
+                <div class="step-item reveal reveal-up">
+                    <div class="step-number">1</div>
+                    <h4>Inquiry</h4>
+                    <p style="font-size: 0.85rem; color: var(--text-muted);">Send specs and quantity.</p>
+                </div>
+                <div class="step-item reveal reveal-up">
+                    <div class="step-number">2</div>
+                    <h4>Quotation</h4>
+                    <p style="font-size: 0.85rem; color: var(--text-muted);">Receive competitive CIF/FOB prices.</p>
+                </div>
+                <div class="step-item reveal reveal-up">
+                    <div class="step-number">3</div>
+                    <h4>Sampling</h4>
+                    <p style="font-size: 0.85rem; color: var(--text-muted);">Get physical samples for approval.</p>
+                </div>
+                <div class="step-item reveal reveal-up">
+                    <div class="step-number">4</div>
+                    <h4>Production</h4>
+                    <p style="font-size: 0.85rem; color: var(--text-muted);">Milling & packaging as per order.</p>
+                </div>
+                <div class="step-item reveal reveal-up">
+                    <div class="step-number">5</div>
+                    <h4>Shipment</h4>
+                    <p style="font-size: 0.85rem; color: var(--text-muted);">Container loading & departure.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="about-split">
+                <div class="reveal reveal-up">
+                    <h2 class="section-title">Shipping & Logistics</h2>
+                    <p>Strategically located near Karachi Port and Port Qasim, we enjoy a logistics advantage that minimizes inland transit time and costs.</p>
+                    <ul class="about-list">
+                        <li><i class="fas fa-anchor"></i> Proximity to Karachi Port (15km)</li>
+                        <li><i class="fas fa-anchor"></i> Access to Port Qasim (5km)</li>
+                        <li><i class="fas fa-truck"></i> Own fleet for local transport</li>
+                        <li><i class="fas fa-shield-alt"></i> Specialized marine insurance partners</li>
+                    </ul>
+                </div>
+                <div class="reveal reveal-up">
+                    <div class="docs-list">
+                        <div class="doc-item"><i class="fas fa-file-invoice"></i> Commercial Invoice</div>
+                        <div class="doc-item"><i class="fas fa-list-ul"></i> Packing List</div>
+                        <div class="doc-item"><i class="fas fa-stamp"></i> Certificate of Origin</div>
+                        <div class="doc-item"><i class="fas fa-file-contract"></i> Bill of Lading (BL)</div>
+                        <div class="doc-item"><i class="fas fa-vial"></i> Phytosanitary Certificate</div>
+                        <div class="doc-item"><i class="fas fa-microscope"></i> SGS Quality Certificate</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div id="footer-placeholder"></div>
+    <script src="js/components.js"></script>
+</body>
+</html>

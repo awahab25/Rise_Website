@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request a Quote | Royal Rice Mills Pakistan</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .quote-container {
+            max-width: 900px;
+            margin: 60px auto;
+            padding: 50px;
+            background: white;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-medium);
+            border: 1px solid #eee;
+        }
+        .quote-header { text-align: center; margin-bottom: 40px; }
+        .quote-header h1 { font-size: 2.2rem; margin-bottom: 10px; }
+        .quote-header p { color: var(--text-muted); }
+
+        .form-section-title { font-size: 1.1rem; border-bottom: 2px solid var(--bg-light); padding-bottom: 10px; margin: 30px 0 20px; color: var(--primary-color); display: flex; align-items: center; gap: 10px; }
+        .form-section-title i { color: var(--secondary-color); }
+
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 8px; font-weight: 600; font-size: 0.9rem; }
+        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-family: inherit; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+
+        @media (max-width: 768px) {
+            .quote-container { padding: 30px 20px; margin: 30px auto; }
+            .form-row { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body style="background: var(--bg-light);">
+    <div id="header-placeholder"></div>
+
+    <div class="container">
+        <div class="quote-container reveal reveal-up active">
+            <div class="quote-header">
+                <h1>Global Wholesale Quotation</h1>
+                <p>Fill out the form below to receive a formal quotation within 12-24 hours.</p>
+            </div>
+
+            <form id="quoteForm" action="success.html">
+                <!-- Personal Info -->
+                <div class="form-section-title"><i class="fas fa-user-tie"></i> Company Information</div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Full Name *</label>
+                        <input type="text" placeholder="e.g. John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Company Name *</label>
+                        <input type="text" placeholder="e.g. Global Foods Ltd" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Country *</label>
+                        <input type="text" placeholder="e.g. United Arab Emirates" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address *</label>
+                        <input type="email" placeholder="email@company.com" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>WhatsApp / Phone Number *</label>
+                    <input type="tel" placeholder="+971..." required>
+                </div>
+
+                <!-- Product Info -->
+                <div class="form-section-title"><i class="fas fa-seedling"></i> Order Requirements</div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Rice Type *</label>
+                        <select id="rice-select" required>
+                            <option value="">Select Rice Variety</option>
+                            <option>Super Kernel Basmati Rice</option>
+                            <option>1121 Basmati Rice</option>
+                            <option>Basmati Sella Rice</option>
+                            <option>IRRI-6 Long Grain</option>
+                            <option>IRRI-9 Long Grain</option>
+                            <option>Brown Rice</option>
+                            <option>Parboiled Rice</option>
+                            <option>Steam Rice</option>
+                            <option>Broken Rice</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Packaging Size *</label>
+                        <select required>
+                            <option value="">Select Size</option>
+                            <option>1 KG Retail</option>
+                            <option>5 KG Retail</option>
+                            <option>10 KG Retail</option>
+                            <option>25 KG Bulk</option>
+                            <option>50 KG Bulk</option>
+                            <option>Jumbo Bags (1 MT)</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Quantity *</label>
+                        <input type="number" placeholder="Quantity in Tons (MT)" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Shipping Terms *</label>
+                        <select required>
+                            <option value="FOB">FOB Karachi</option>
+                            <option value="CIF">CIF (Destination Port)</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Additional Message / Specific Requirements</label>
+                    <textarea rows="4" placeholder="e.g. Private labeling needed, target delivery date, destination port name..."></textarea>
+                </div>
+
+                <div style="margin-top: 40px; text-align: center;">
+                    <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 20px;">By submitting, you agree to our privacy policy regarding export business handling.</p>
+                    <button type="submit" class="btn btn-gold" style="width: 100%; padding: 18px; font-size: 1.1rem;">Submit Quote Request</button>
+                    <p style="margin-top: 20px;">Or contact us directly via <a href="https://wa.me/923001234567" class="text-green" style="font-weight: 700;">WhatsApp</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="footer-placeholder"></div>
+    <script src="js/components.js"></script>
+    <script>
+        // Pre-select rice type if passed in URL
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const riceId = params.get('id');
+            if (riceId) {
+                // Mapping ID to nice name for select
+                const riceSelect = document.getElementById('rice-select');
+                for (let i = 0; i < riceSelect.options.length; i++) {
+                    if (riceSelect.options[i].text.toLowerCase().includes(riceId.replace(/-/g, ' '))) {
+                        riceSelect.selectedIndex = i;
+                        break;
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

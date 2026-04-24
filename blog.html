@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | Royal Rice Mills Pakistan</title>
+    <meta name="description" content="Read expert articles on rice export, storage tips, basmati vs IRRI comparisons, and private labeling from Royal Rice Mills.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .inner-hero {
+            background: linear-gradient(rgba(11,61,46,0.85), rgba(11,61,46,0.85)),
+                url('https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&q=80&w=1600');
+            background-size: cover;
+            background-position: center;
+            padding: 120px 0 80px;
+            color: white;
+            text-align: center;
+        }
+        .blog-layout {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 50px;
+            padding: 60px 0;
+        }
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 28px;
+        }
+        .blog-card {
+            border: 1.5px solid #eee;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            background: white;
+            transition: all 0.3s;
+        }
+        .blog-card:hover {
+            border-color: var(--secondary-color);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.1);
+            transform: translateY(-4px);
+        }
+        .blog-card-img {
+            position: relative;
+            overflow: hidden;
+        }
+        .blog-card-img img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s;
+        }
+        .blog-card:hover .blog-card-img img { transform: scale(1.05); }
+        .blog-card-img .blog-brand {
+            position: absolute;
+            bottom: 12px;
+            right: 12px;
+            background: rgba(11,61,46,0.85);
+            color: var(--secondary-color);
+            font-size: 0.6rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 5px;
+            letter-spacing: 1px;
+            border: 1px solid var(--secondary-color);
+        }
+        .blog-body { padding: 22px; }
+        .blog-cat-tag {
+            display: inline-block;
+            background: var(--primary-color);
+            color: var(--secondary-color);
+            font-size: 0.65rem;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+        .blog-body h3 {
+            font-size: 1.1rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+        .blog-body h3 a { color: inherit; text-decoration: none; transition: color 0.2s; }
+        .blog-body h3 a:hover { color: var(--secondary-color); }
+        .blog-body .excerpt {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+        .blog-meta {
+            display: flex;
+            gap: 16px;
+            font-size: 0.78rem;
+            color: #999;
+            padding-top: 14px;
+            border-top: 1px solid #f0f0f0;
+        }
+        .blog-meta i { margin-right: 5px; color: var(--secondary-color); }
+
+        /* Sidebar */
+        .blog-sidebar {
+            position: sticky;
+            top: 100px;
+            height: fit-content;
+        }
+        .sb-box {
+            background: var(--bg-light);
+            border: 1px solid #e8e8e8;
+            border-radius: var(--radius-md);
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+        .sb-box h4 {
+            font-size: 1rem;
+            color: var(--primary-color);
+            margin-bottom: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .sb-search {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1.5px solid #ddd;
+            border-radius: var(--radius-sm);
+            font-family: inherit;
+            font-size: 0.9rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        .sb-search:focus { border-color: var(--primary-color); }
+        .sb-cat-list { list-style: none; padding: 0; margin: 0; }
+        .sb-cat-list li {
+            padding: 9px 0;
+            border-bottom: 1px solid #e8e8e8;
+            font-size: 0.9rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: color 0.2s;
+        }
+        .sb-cat-list li:last-child { border-bottom: none; }
+        .sb-cat-list li:hover { color: var(--secondary-color); }
+        .sb-cat-list li.active { color: var(--secondary-color); font-weight: 700; }
+        .sb-cat-count {
+            background: var(--primary-color);
+            color: white;
+            font-size: 0.65rem;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-weight: 700;
+        }
+        .sb-tag-cloud { display: flex; flex-wrap: wrap; gap: 6px; }
+        .sb-tag {
+            background: white;
+            border: 1px solid #ddd;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .sb-tag:hover { border-color: var(--secondary-color); color: var(--primary-color); background: #fffbee; }
+        #results-info { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 18px; font-weight: 500; }
+        #results-info span { color: var(--primary-color); font-weight: 700; }
+        .no-results { text-align: center; padding: 60px 20px; grid-column: 1/-1; }
+        .no-results i { font-size: 3.5rem; color: #ddd; display: block; margin-bottom: 16px; }
+        @media (max-width: 992px) {
+            .blog-layout { grid-template-columns: 1fr; }
+            .blog-sidebar { position: static; }
+        }
+    </style>
+</head>
+<body>
+    <div id="header-placeholder" data-active="blog"></div>
+
+    <section class="inner-hero">
+        <div class="container">
+            <h1>Rice Export Insights &amp; Blog</h1>
+            <p>Expert knowledge on rice varieties, export processes, storage tips, and industry trends from Royal Rice Mills.</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="blog-layout">
+            <!-- Blog Grid -->
+            <div>
+                <p id="results-info"></p>
+                <div class="blog-grid" id="blog-container"></div>
+            </div>
+
+            <!-- Sidebar -->
+            <aside class="blog-sidebar">
+                <div class="sb-box">
+                    <h4>Search</h4>
+                    <input type="text" class="sb-search" id="blog-search" placeholder="Search articles...">
+                </div>
+                <div class="sb-box">
+                    <h4>Categories</h4>
+                    <ul class="sb-cat-list" id="cat-list"></ul>
+                </div>
+                <div class="sb-box">
+                    <h4>Popular Tags</h4>
+                    <div class="sb-tag-cloud" id="tag-cloud"></div>
+                </div>
+                <div class="sb-box" style="background:var(--primary-color); border-color:var(--primary-color);">
+                    <h4 style="color:var(--secondary-color);">Need Rice Supply?</h4>
+                    <p style="color:rgba(255,255,255,0.8); font-size:0.85rem; margin-bottom:14px;">Get competitive quotes for export-quality rice from Pakistan.</p>
+                    <a href="quote.html" class="btn btn-gold" style="width:100%; display:block; text-align:center;">Request Quote</a>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <div id="footer-placeholder"></div>
+    <script src="js/components.js"></script>
+    <script>
+        // ── INLINE BLOG DATA (no fetch needed) ──────────────────────────────
+        const BLOGS = [
+            {
+                id: "rice-export-process-pakistan",
+                title: "Complete Guide to Rice Export Process from Pakistan",
+                slug: "rice-export-process-pakistan",
+                excerpt: "Learn the complete step-by-step process of exporting rice from Pakistan — from paddy procurement to international shipment at Karachi port.",
+                category: "Export Guide",
+                date: "2026-03-15",
+                readTime: "8 min read",
+                image: "https://images.unsplash.com/photo-1536679545597-c2e5e1946495?auto=format&fit=crop&q=80&w=800",
+                tags: ["export", "pakistan", "shipping", "documentation"]
+            },
+            {
+                id: "basmati-vs-irri-comparison",
+                title: "Basmati vs IRRI Rice: Complete Comparison Guide",
+                slug: "basmati-vs-irri-comparison",
+                excerpt: "Understand the key differences between Basmati and IRRI rice varieties — grain length, aroma, pricing, and best use cases for importers.",
+                category: "Rice Knowledge",
+                date: "2026-02-28",
+                readTime: "6 min read",
+                image: "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&q=80&w=800",
+                tags: ["basmati", "irri", "comparison", "knowledge"]
+            },
+            {
+                id: "how-to-store-rice-long-term",
+                title: "How to Store Rice for Long Term: Expert Tips",
+                slug: "how-to-store-rice-long-term",
+                excerpt: "Expert tips on storing rice properly to maintain quality, prevent pest infestation, and extend shelf life for wholesalers and distributors.",
+                category: "Storage Tips",
+                date: "2026-01-20",
+                readTime: "5 min read",
+                image: "https://images.unsplash.com/photo-1591814468924-caf88d1232e1?auto=format&fit=crop&q=80&w=800",
+                tags: ["storage", "tips", "warehouse", "quality"]
+            },
+            {
+                id: "private-label-rice-packaging",
+                title: "Private Label Rice Packaging: Complete Guide for Importers",
+                slug: "private-label-rice-packaging",
+                excerpt: "Everything you need to know about starting your own rice brand with private label packaging from Pakistan's leading rice mills.",
+                category: "Business Guide",
+                date: "2025-12-10",
+                readTime: "7 min read",
+                image: "https://images.unsplash.com/photo-1512058560366-cd24270083cd?auto=format&fit=crop&q=80&w=800",
+                tags: ["private-label", "packaging", "branding", "business"]
+            }
+        ];
+
+        let activeCategory = null;
+        let activeTag = null;
+
+        // Build categories
+        function buildSidebar() {
+            const cats = {};
+            const allTags = new Set();
+            BLOGS.forEach(b => {
+                cats[b.category] = (cats[b.category] || 0) + 1;
+                b.tags.forEach(t => allTags.add(t));
+            });
+
+            const catList = document.getElementById('cat-list');
+            catList.innerHTML = `<li class="${!activeCategory ? 'active' : ''}" onclick="filterCat(null)">All Posts <span class="sb-cat-count">${BLOGS.length}</span></li>`;
+            Object.entries(cats).forEach(([cat, count]) => {
+                catList.innerHTML += `<li class="${activeCategory === cat ? 'active' : ''}" onclick="filterCat('${cat}')">${cat} <span class="sb-cat-count">${count}</span></li>`;
+            });
+
+            const tagCloud = document.getElementById('tag-cloud');
+            tagCloud.innerHTML = '';
+            allTags.forEach(tag => {
+                tagCloud.innerHTML += `<span class="sb-tag" onclick="filterTag('${tag}')">#${tag}</span>`;
+            });
+        }
+
+        function renderBlogs(blogs) {
+            const container = document.getElementById('blog-container');
+            const info = document.getElementById('results-info');
+            info.innerHTML = `Showing <span>${blogs.length}</span> of <span>${BLOGS.length}</span> articles`;
+
+            if (blogs.length === 0) {
+                container.innerHTML = `<div class="no-results"><i class="fas fa-newspaper"></i><h3 style="color:var(--text-muted);">No articles found.</h3><p style="color:#aaa; margin-top:8px;">Try a different search term or category.</p></div>`;
+                return;
+            }
+
+            container.innerHTML = '';
+            blogs.forEach(post => {
+                const dateStr = new Date(post.date).toLocaleDateString('en-US', { month:'long', day:'numeric', year:'numeric' });
+                container.innerHTML += `
+                <article class="blog-card">
+                    <div class="blog-card-img">
+                        <img src="${post.image}" alt="${post.title}" onerror="this.src='https://images.unsplash.com/photo-1536679545597-c2e5e1946495?auto=format&fit=crop&q=80&w=800'">
+                        <span class="blog-brand">Royal Rice Mills</span>
+                    </div>
+                    <div class="blog-body">
+                        <span class="blog-cat-tag">${post.category}</span>
+                        <h3><a href="blog-post.html?slug=${post.slug}">${post.title}</a></h3>
+                        <p class="excerpt">${post.excerpt}</p>
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar-alt"></i>${dateStr}</span>
+                            <span><i class="far fa-clock"></i>${post.readTime}</span>
+                        </div>
+                    </div>
+                </article>`;
+            });
+        }
+
+        function applyBlogFilters() {
+            const query = document.getElementById('blog-search').value.toLowerCase().trim();
+            const filtered = BLOGS.filter(post => {
+                const matchSearch = !query || post.title.toLowerCase().includes(query) || post.excerpt.toLowerCase().includes(query);
+                const matchCat = !activeCategory || post.category === activeCategory;
+                const matchTag = !activeTag || post.tags.includes(activeTag);
+                return matchSearch && matchCat && matchTag;
+            });
+            renderBlogs(filtered);
+        }
+
+        function filterCat(cat) {
+            activeCategory = cat;
+            activeTag = null;
+            buildSidebar();
+            applyBlogFilters();
+        }
+
+        function filterTag(tag) {
+            activeTag = (activeTag === tag) ? null : tag;
+            activeCategory = null;
+            buildSidebar();
+            applyBlogFilters();
+        }
+
+        // Init
+        document.getElementById('blog-search').addEventListener('input', applyBlogFilters);
+        buildSidebar();
+        renderBlogs(BLOGS);
+    </script>
+</body>
+</html>
